@@ -2,7 +2,7 @@ import requests, json, urllib2, subprocess, time
 from bs4 import BeautifulSoup
 
 def getDateTime():
-    return 'Today is %s. It is %s.' % (time.strftime('%A %b %d'), time.strftime('%I:%M %p'))
+    return 'Today is %s. It is %s.' % (time.strftime('%A %B %d'), time.strftime('%I:%M %p'))
 
 def getSubway():
     mtaUrl= 'http://service.mta.info/ServiceStatus/status.html'
@@ -34,5 +34,7 @@ def getWeather():
 from os import system
 system('say ' + getDateTime() + ' ' + getWeather() + ' ' + getSubway())
 
-# from espeak import espeak
-# espeak.synth(getDateTime() + ' ' + getWeather() + ' ' + getSubway())
+from subprocess import call
+call(['espeak', getDateTime()])
+call(['espeak', getWeather()])
+call(['espeak', getSubway()])
