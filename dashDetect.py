@@ -7,11 +7,12 @@ import getData, datetime
 # it takes a minute for the scapy sniffing to initialize, so I print this to know when it's actually ready to go
 print('Init done.')
 
-lastCalled = datetime.datetime.today()
+lastCalled = datetime.datetime(2016,1,1,1,1,1,1)
 
 def arp_display(pkt):
+  global lastCalled
   if pkt[ARP].op == 1: #who-has (request)
-    if (pkt[ARP].psrc == '0.0.0.0') and (datetime.datetime.now() - lastCalled > datetime.datetime.timedelta(minutes=1)): # ARP Probes will match this
+    if (pkt[ARP].psrc == '0.0.0.0') and (datetime.datetime.now() - lastCalled > datetime.timedelta(minutes=1)): # ARP Probes will match this
         weather = getData.getWeather()
         subway = getData.getSubway()
 
