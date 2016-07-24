@@ -30,11 +30,3 @@ def getWeather():
     dayF = str(int(weatherF['list'][0]['temp']['day']))
     eveningF = str(int(weatherF['list'][0]['temp']['eve']))
     return 'Weather: %s. Morning: %s degrees. Afternoon: %s degrees. Evening: %s degrees.' % (desc, morningF, dayF, eveningF)
-
-from os import system
-system('say ' + getDateTime() + ' ' + getWeather() + ' ' + getSubway())
-
-from subprocess import call
-call(['espeak', getDateTime()])
-call(['espeak', getWeather()])
-call(['espeak', getSubway()])
