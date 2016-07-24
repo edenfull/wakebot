@@ -10,10 +10,17 @@ print('Init done.')
 def arp_display(pkt):
   if pkt[ARP].op == 1: #who-has (request)
     if pkt[ARP].psrc == '0.0.0.0': # ARP Probes will match this
-        if pkt[ARP].psrc == 'f0:27:2d:86:7b:bf':
+        weather = getData.getWeather()
+        subway = getData.getSubway()
+
+        if pkt[ARP].hwsrc == 'f0:27:2d:86:7b:bf':
             call(['espeak', getData.getDateTime()])
-            call(['espeak', getData.getWeather()])
-            call(['espeak', getData.getSubway()])
+            call(['espeak', weather.morning])
+            call(['espeak', weather.day])
+            call(['espeak', weather.evening])
+            call(['espeak', subway.ace])
+            call(['espeak', subway.nqr])
+            call(['espeak', subway.oneTwoThree])
         else:
             print "ARP Probe from unknown device: " + pkt[ARP].hwsrc
 

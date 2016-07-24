@@ -11,7 +11,11 @@ def getSubway():
     ace = statuses[3].span.contents[0]
     nqr = statuses[8].span.contents[0]
     oneTwoThree = statuses[0].span.contents[0]
-    return 'A C E status: %s. N Q R status: %s. 1 2 3 status: %s.' % (ace, nqr, oneTwoThree)
+    return {
+        'ace': 'A C E status: %s.' % (ace),
+        'nqr': 'N Q R status: %s.' % (nqr),
+        'oneTwoThree': '1 2 3 status: %s.' % (oneTwoThree)
+    }
 
 def getWeather():
     key = ''
@@ -29,4 +33,8 @@ def getWeather():
     morningF = str(int(weatherF['list'][0]['temp']['morn']))
     dayF = str(int(weatherF['list'][0]['temp']['day']))
     eveningF = str(int(weatherF['list'][0]['temp']['eve']))
-    return 'Weather: %s. Morning: %s degrees. Afternoon: %s degrees. Evening: %s degrees.' % (desc, morningF, dayF, eveningF)
+    return {
+        'morning': 'Weather: %s. Morning: %s degrees.' % (desc, morningF),
+        'day': 'Afternoon: %s degrees.' % (dayF),
+        'evening': 'Evening: %s degrees.' % (eveningF)
+    }
