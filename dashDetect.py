@@ -14,13 +14,13 @@ def arp_display(pkt):
         subway = getData.getSubway()
 
         if pkt[ARP].hwsrc == 'f0:27:2d:86:7b:bf':
-            call(['espeak', getData.getDateTime()])
-            call(['espeak', weather['morning']])
-            call(['espeak', weather['day']])
-            call(['espeak', weather['evening']])
-            call(['espeak', subway['ace']])
-            call(['espeak', subway['nqr']])
-            call(['espeak', subway['oneTwoThree']])
+            call(['flite', '-voice', 'slt', getData.getDateTime()])
+            call(['flite', '-voice', 'slt', weather['morning']])
+            call(['flite', '-voice', 'slt', weather['day']])
+            call(['flite', '-voice', 'slt', weather['evening']])
+            call(['flite', '-voice', 'slt', subway['ace']])
+            call(['flite', '-voice', 'slt', subway['nqr']])
+            call(['flite', '-voice', 'slt', subway['oneTwoThree']])
         else:
             print "ARP Probe from unknown device: " + pkt[ARP].hwsrc
 
